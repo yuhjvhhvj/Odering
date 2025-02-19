@@ -26,7 +26,21 @@ public interface EmployeeMapper {
     +"values ( #{name}, #{username}, #{password}, #{phone}, #{sex}, #{idNumber}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})")
     void insert(Employee employee);
 
+    /**
+     * 分页查询
+     */
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
+    /**
+     * 更新员工数据
+     */
     void update(Employee employee);
+
+    /**
+     * 根据ID查询员工信息
+     * @param id id
+     * @return 返回
+     */
+    @Select("select * from sky_take_out.employee where id = #{id}")
+    Employee getById(Long id);
 }
